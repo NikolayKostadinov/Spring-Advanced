@@ -1,4 +1,4 @@
-package bg.manhattan.books.model.dto;
+package bg.manhattan.booksresttemplete.model.dto;
 
 public class BookDTO {
 
@@ -42,5 +42,15 @@ public class BookDTO {
     public BookDTO setAuthor(AuthorDTO author) {
         this.author = author;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "BookDTO{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", author=" + author.getName() +
+                '}';
     }
 }

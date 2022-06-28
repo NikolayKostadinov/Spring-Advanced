@@ -41,7 +41,9 @@ public class BooksServiceImpl implements BooksService {
 
     @Override
     public Long createBook(BookDTO book) {
-        AuthorEntity author = this.authorRepository.findByName(book.getAuthor().getName()).orElseGet(() -> new AuthorEntity().setName(book.getAuthor().getName()));
+        AuthorEntity author = this.authorRepository
+                .findByName(book.getAuthor().getName())
+                .orElseGet(() -> new AuthorEntity().setName(book.getAuthor().getName()));
 
         BookEntity newBook = this.mapper
                 .map(book, BookEntity.class)

@@ -34,7 +34,8 @@ public class DbInitializer implements CommandLineRunner {
             AuthorEntity author3 = new AuthorEntity().setName("Иван Вазов");
             authors.add(author3.addBook(new BookEntity().setTitle("Аз съм българче").setIsbn("9789546572042").setAuthor(author3))
                     .addBook(new BookEntity().setTitle("Немили-недраги").setIsbn("9789540902425").setAuthor(author3))
-                    .addBook(new BookEntity().setTitle("Епопея на забравените").setIsbn("954657368Х").setAuthor(author3)));
+                    .addBook(new BookEntity().setTitle("Епопея на забравените").setIsbn("954657368Х").setAuthor(author3))
+                    .addBook(new BookEntity().setTitle("Под игото").setIsbn("954657368132").setAuthor(author3)));
 
             this.authorRepository.saveAll(authors);
         }
