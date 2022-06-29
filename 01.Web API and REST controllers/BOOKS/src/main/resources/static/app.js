@@ -15,7 +15,7 @@ function onLoadBookClick(event) {
     fetch("http://localhost:8080/api/books", requestOptions)
         .then(response => response.json())
         .then(result => result.forEach(book => addRecord(book)))
-            .catch(error => console.log('error', error));
+        .catch(error => console.log('error', error));
 }
 
 function addRecord(book) {
@@ -68,22 +68,29 @@ function createBtn(name) {
 let btnSubmit = document.getElementById('submit');
 btnSubmit.addEventListener('click', sendData);
 
-function sendData() {
+function sendData(event) {
+    event.preventDefault()
     const formElement = document.querySelector("form");
     const formData = new FormData(formElement);
-    let data = JSON.stringify(Object.fromEntries(formData));
+    let obj = Object.fromEntries(formData)
+    let book = {};
+    book.title = obj.title;
+    book.isbn = obj.isbn;
+    book.author = {};
+    book.author.name = obj.author;
+    let data = JSON.stringify(book);
+
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
 
     let requestOptions = {
         method: 'POST',
         headers: myHeaders,
-        body: data,
-        redirect: 'follow'
+        body: data
     };
 
     fetch("http://localhost:8080/api/books", requestOptions)
         .then(response => response.text())
-        .then(result => addRecord(data))
+        .then(result => addRecord(book))
         .catch(error => console.log('error', error));
 }
-
-btnSubmit.addEventListener('click', sendData);
