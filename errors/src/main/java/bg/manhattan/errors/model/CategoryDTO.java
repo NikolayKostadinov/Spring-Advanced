@@ -2,11 +2,11 @@ package bg.manhattan.errors.model;
 
 import java.math.BigDecimal;
 
-public class ProductDTO {
+public class CategoryDTO {
     private final String name;
     private final BigDecimal price;
 
-    public ProductDTO(String name, BigDecimal price) {
+    public CategoryDTO(String name, BigDecimal price) {
         this.name = name;
         this.price = price;
     }
