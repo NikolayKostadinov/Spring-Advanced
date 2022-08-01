@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://hateoas
+    :3306/singers_contests?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
+    username: root
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    defer-datasource-initialization: true
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+  devtools:
+    restart:
+      enabled: true
+logging:
+  level:
+    org.hibernate.SQLQuery: TRACE
+    org.hibernate.type.descriptor: TRACE
+app:
+  default:
+    admin:
+      password: P@ssw0rd
